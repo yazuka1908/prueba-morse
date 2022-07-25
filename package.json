@@ -1,0 +1,23 @@
+{
+  "type": "module",
+  "name": "prueba-morse",
+  "version": "1.0.0",
+  "description": "prueba mercado libre - meli - programa codigo morse",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./src/index.js",
+    "dev": "nodemon ./src/index.js",
+    "test": "mocha -w ./tests/**/*.test.js || exit 0"
+  },
+  "author": "James Tellez <james.tellez1908@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "chai": "*",
+    "mocha": "*",
+    "npm": "^8.15.0"
+  },
+  "keywords": []
+}
