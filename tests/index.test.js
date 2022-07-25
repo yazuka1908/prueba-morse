@@ -1,4 +1,7 @@
-const _ASSERT = require('chai').assert; 
+const IllegalArgumentError = require('../src/exceptions/IllegalArgumentError');
+const _CHAI = require('chai');
+const _ASSERT = _CHAI.assert;
+const _EXPECT = _CHAI.expect;
 const _MORSESERVICE = require('../src/services/MorseService');
 
 //Params
@@ -10,30 +13,34 @@ const MORSE_CODE_OK = ".... --- .-.. .- -- . .-.. ..";
 //Result
 const decodeBits2Morse = _MORSESERVICE.decodeBits2Morse(BITS_MOCK_HOLAMELI);
 const decodeBits2MorseJames = _MORSESERVICE.decodeBits2Morse(BITS_MOCK_JAMES);
-const decodeBits2MorseEmpty = _MORSESERVICE.decodeBits2Morse(BITS_MOCK_EMPTY);
-const decodeBits2MorseChartInvalid = _MORSESERVICE.decodeBits2Morse(BITS_MOCK_CHARACTE_INVALID);
 
-describe('TEST LEVEL I - DECODE (BITS) TO (MORSE CODE)',() => {
-    describe('Test 1 - Decode bits to morse code "HOLA MELI" ',() => {
-        it('Morse code expected:'+ MORSE_CODE_OK, () => {
-            _ASSERT.equal(decodeBits2Morse,MORSE_CODE_OK);
+describe('TEST LEVEL I - DECODE (BITS) TO (MORSE CODE)', () => {
+    describe('Test 1 - Decode bits to morse code "HOLA MELI" ', () => {
+        it('Morse code expected:' + MORSE_CODE_OK, () => {
+            _ASSERT.equal(decodeBits2Morse, MORSE_CODE_OK);
         });
     });
-    describe('Test 2 - Decode bits to morse code "HOLA MELI", is not equal',() => {
+    describe('Test 2 - Decode bits to morse code "HOLA MELI", is not equal', () => {
         it('Morse code expected: '.concat(MORSE_CODE_OK).concat(' - String execute: ').concat(), () => {
-            _ASSERT.notEqual(decodeBits2MorseJames,MORSE_CODE_OK);
+            _ASSERT.notEqual(decodeBits2MorseJames, MORSE_CODE_OK);
         });
     });
-    describe('Test 3 - Empty bits string ',() => {
+    describe('Test 3 - Empty bits string ', () => {
         it('Response Morse Code empty, display message on console "IllegalArgumentError: This message is empty": ', () => {
-          _ASSERT.equal(decodeBits2MorseEmpty,"");
-          
+            try {
+                _MORSESERVICE.decodeBits2Morse(BITS_MOCK_EMPTY);
+            } catch (error) {
+                _ASSERT.equal('This message is empty', error.message);
+            }
         });
     });
-    describe('Test 4 - Invalid bit character ',() => {
+    describe('Test 4 - Invalid bit character ', () => {
         it('Response Morse Code empty, display message on console "IllegalArgumentError: This message contains invalid characters"', () => {
-          _ASSERT.equal(decodeBits2MorseChartInvalid,"");
-          
+            try {
+                _MORSESERVICE.decodeBits2Morse(BITS_MOCK_CHARACTE_INVALID);
+            } catch (error) {
+                _ASSERT.equal('This message contains invalid characters', error.message);
+            }
         });
     });
 });
