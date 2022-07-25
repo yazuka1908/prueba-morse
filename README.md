@@ -57,7 +57,9 @@ ingresados en las entradas sean válidos.***
 ● URL de la api e información complementaria.
 
 
-# HERRAMIENTAS UTILIZADAS!!!
+# SOLUCIÓN!!!
+
+## HERRAMIENTAS UTILIZADAS
 
 Se realiza una breve descripción de la aplicación, lenguaje, librerías y IDE utilizados:
 
