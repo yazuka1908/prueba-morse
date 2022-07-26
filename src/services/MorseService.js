@@ -1,20 +1,56 @@
 const IllegalArgumentError = require('../exceptions/IllegalArgumentError');
 const _CONSTANTS = require('../models/ConstantsModel');
-const _PULSE = require('../models/pulseModel');
+const _PULSE = require('../models/PulseModel');
+const _UTL_MORSE = require('../utilities/UtilMorseCode');
+const _UTL_ENUM_MORSECODE = require('../utilities/EnumMorseCode');
 
 function decodeBits2Morse(bits) {
-    validateInboundBites(bits)
+    validateInboundBites(bits, _UTL_ENUM_MORSECODE._PATTERN_VALIDATOR.BIT)
     let pulses = getPulses(bits);
     let averagePulses = getAverageByPulse(pulses, true);
 
     return pulses.map((pulse) => decodePulse(pulse, averagePulses)).join('');
 }
 
-function validateInboundBites(inputBites) {
+function translate2Human(messageMorse) {
+    validateInboundBites(messageMorse, _UTL_ENUM_MORSECODE._PATTERN_VALIDATOR.MORSE)
+
+    let morseCodeDictionary = _UTL_MORSE.getMorseCodeDictionary();
+
+    let messageHuman = messageMorse.split(' ')
+        .map(morseCode => {
+            let objMorseCodeDictionary = morseCodeDictionary.find((reg) => {
+                return (morseCode == reg.morseCode) ? reg : "";
+            })
+            return (objMorseCodeDictionary == null || objMorseCodeDictionary == undefined || objMorseCodeDictionary == "" || objMorseCodeDictionary.length == 0) ? " " : objMorseCodeDictionary.character;
+        })
+        .join('');
+
+    return messageHuman;
+}
+
+function translate2Morse(messageHuman) {
+    validateInboundBites(messageHuman, _UTL_ENUM_MORSECODE._PATTERN_VALIDATOR.HUMAN)
+
+    let morseCodeDictionary = _UTL_MORSE.getMorseCodeDictionary();
+
+    let messageMorse = messageHuman.split('')
+        .map(character => {
+            let objMorseCodeDictionary = morseCodeDictionary.find((reg) => {
+                return (character == reg.character) ? reg : "";
+            })
+            return (objMorseCodeDictionary == null || objMorseCodeDictionary == undefined || objMorseCodeDictionary == "" || objMorseCodeDictionary.length == 0) ? "" : objMorseCodeDictionary.morseCode;
+        })
+        .join(' ');
+
+    return messageMorse;
+}
+
+function validateInboundBites(inputBites, patternValidator) {
     if (inputBites.length == 0) {
         throw new IllegalArgumentError('This message is empty');
     }
-    if (!_CONSTANTS.BINARY_PATTERN.test(inputBites)) {
+    if (!new RegExp(patternValidator).test(inputBites)) {
         throw new IllegalArgumentError('This message contains invalid characters');
     }
 }
@@ -44,5 +80,7 @@ function decodePulse(pulse, averagePulse) {
 }
 
 module.exports = {
-    decodeBits2Morse
+    decodeBits2Morse,
+    translate2Human,
+    translate2Morse
 }
