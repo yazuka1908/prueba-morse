@@ -10,7 +10,7 @@ _CHAI.use(_CHAI_HTTP);
 describe('TEST API REST TRANSLATE DECODE BITS, TEXT HUMAN AND TEXT MORSE CODE', () => {
 
     describe('TEST (TRANSLATE DECODE BITS) ', () => {
-        describe('Test POST [/translate/decodeBits]: ', () => {
+        describe('POST [/translate/decodeBits]: ', () => {
             it('it should return message morse code. Response: ".... --- .-.. .- -- . .-.. .."', (done) => {
                 let text = "000000001101101100111000001111110001111110011111100000001110111111110111011100000001100011111100000111111001111110000000110000110111111110111011100000011011100000000000";
                 let response_ok = ".... --- .-.. .- -- . .-.. ..";
@@ -78,7 +78,7 @@ describe('TEST API REST TRANSLATE DECODE BITS, TEXT HUMAN AND TEXT MORSE CODE', 
     });
 
     describe('TEST (TRANSLATE TEXT HUMAN) ', () => {
-        describe('Test POST [/translate/2human]": ', () => {
+        describe('POST [/translate/2human]": ', () => {
             it('it should return message human. Response: "HOLA MELI"', (done) => {
                 let text = ".... --- .-.. .-  -- . .-.. ..";
                 let response_ok = "HOLA MELI";
@@ -147,7 +147,7 @@ describe('TEST API REST TRANSLATE DECODE BITS, TEXT HUMAN AND TEXT MORSE CODE', 
 
 
     describe('TEST (TRANSLATE TEXT MORSE CODE) ', () => {
-        describe('Test POST [/translate/2morse]: ', () => {
+        describe('POST [/translate/2morse]: ', () => {
             it('it should return message morse code. Response: ".... --- .-.. .-  -- . .-.. .."', (done) => {
                 let text = "HOLA MELI";
                 let response_ok = ".... --- .-.. .-  -- . .-.. ..";
