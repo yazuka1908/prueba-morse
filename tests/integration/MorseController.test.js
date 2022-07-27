@@ -1,6 +1,6 @@
 const _CHAI = require('chai');
 const _CHAI_HTTP = require('chai-http');
-const _HTTP_STATUS = require('../src/models/HttpStatus');
+const _HTTP_STATUS = require('../util/HttpStatus');
 const _URL = 'http://localhost:3000';
 
 _CHAI.should();
@@ -163,6 +163,7 @@ describe('TEST API REST TRANSLATE DECODE BITS, TEXT HUMAN AND TEXT MORSE CODE', 
                         done();
                     });
             });
+            
             it('STATUS 400: it should NOT return message morse code, the translator has presented a failure. Caused by: character invalid text human {text:"HOLA MELI.?-"}', (done) => {
                 let text = "HOLA MELI.?-";
                 let error_400 = "You have entered an invalid input, check the api documentation";
