@@ -94,11 +94,9 @@ npm i
 ![image](https://user-images.githubusercontent.com/72896123/180824410-32cca578-ef75-47d3-9b3c-6211688bc0c2.png)
 
 
-## COMANDOS EJECUCIÓN
+## COMANDOS EJECUCIÓN - LOCAL
 
-Se informa sobre los comandos para compilar y ejecutar el proyecto, también para realizar el seguimiento de pruebas, el cual ocupara el nivel I y II:
-
-### EJECUTAR PROYECTO:
+Se informa sobre los comandos para compilar y ejecutar el proyecto en ambiente local:
 
 1. Digite el comando: npm run dev
 
@@ -108,13 +106,21 @@ Se informa sobre los comandos para compilar y ejecutar el proyecto, también par
 
 ![image](https://user-images.githubusercontent.com/72896123/180830461-9e0c9811-a0d4-45f9-83f5-cdf1761e7d19.png)
 
-### EJECUTAR TEST:
-
-1. Digite el comando: npm run test
+3. Digite el comando: npm run test
 
 ![image](https://user-images.githubusercontent.com/72896123/180832580-b76aefd1-3448-4f50-847f-f6206b16909c.png)
 
-2. Se debe visualizar el correcto funcionamiento del servidor iniciado
+4. Se debe visualizar el correcto funcionamiento del servidor iniciado
 
-![image](https://user-images.githubusercontent.com/72896123/180832748-79cb58e1-87e8-46b5-a5fa-477502c7dde7.png)
+![image](https://user-images.githubusercontent.com/72896123/181274733-5a5ce81c-55c1-406e-8c17-890a67e185d7.png)
+![image](https://user-images.githubusercontent.com/72896123/181274973-4e7cf4a1-ab06-450d-b268-b82a55fe69f0.png)
 
+5. Si deseamos ejecutarlo a nivel local mediante Curls, estos son los comandos:
+
+curl -X 'POST' "http://localhost:3000/translate/decodeBits" -H 'accept:application/json' -H 'Content-Type:application/json' -d '{"text":"000000001101101100111000001111110001111110011111100000001110111111110111011100000001100011111100000111111001111110000000110000110111111110111011100000011011100000000000"}'
+
+curl -X 'POST' "http://localhost:3000/translate/2human" -H 'accept:application/json' -H 'Content-Type:application/json' -d '{"text":".... --- .-.. .-  -- . .-.. .."}'
+
+curl -X 'POST' "http://localhost:3000/translate/2morse" -H 'accept:application/json' -H 'Content-Type:application/json' -d '{"text":"HOLA MELI"}'
+
+![image](https://user-images.githubusercontent.com/72896123/181279410-3243f83f-5c1c-4c01-ac5f-a5130d0cc755.png)
