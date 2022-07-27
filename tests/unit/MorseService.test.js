@@ -1,6 +1,6 @@
 const _CHAI = require('chai');
 const _ASSERT = _CHAI.assert;
-const _MORSESERVICE = require('../src/services/MorseService');
+const _MORSESERVICE = require('../../src/services/MorseService');
 
 //* LEVEL I ------------------------->
 //Params
