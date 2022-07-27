@@ -115,7 +115,7 @@ Se informa sobre los comandos para compilar y ejecutar el proyecto en ambiente l
 ![image](https://user-images.githubusercontent.com/72896123/181274733-5a5ce81c-55c1-406e-8c17-890a67e185d7.png)
 ![image](https://user-images.githubusercontent.com/72896123/181274973-4e7cf4a1-ab06-450d-b268-b82a55fe69f0.png)
 
-5. Si deseamos ejecutarlo a nivel local mediante Curls, estos son los comandos:
+5. Si deseamos ejecutarlo a nivel local mediante Curls, estos son los comandos los cuales podemos importar desde postman para probar:
 
 curl -X 'POST' "http://localhost:3000/translate/decodeBits" -H 'accept:application/json' -H 'Content-Type:application/json' -d '{"text":"000000001101101100111000001111110001111110011111100000001110111111110111011100000001100011111100000111111001111110000000110000110111111110111011100000011011100000000000"}'
 
@@ -123,4 +123,14 @@ curl -X 'POST' "http://localhost:3000/translate/2human" -H 'accept:application/j
 
 curl -X 'POST' "http://localhost:3000/translate/2morse" -H 'accept:application/json' -H 'Content-Type:application/json' -d '{"text":"HOLA MELI"}'
 
-![image](https://user-images.githubusercontent.com/72896123/181279410-3243f83f-5c1c-4c01-ac5f-a5130d0cc755.png)
+importamos el curl en postman:
+
+![image](https://user-images.githubusercontent.com/72896123/181281595-45efde2f-1469-43ac-a67b-5820b718512d.png)
+![image](https://user-images.githubusercontent.com/72896123/181282687-ecc1f75f-1f07-4461-8b47-fb887e40a710.png)
+![image](https://user-images.githubusercontent.com/72896123/181282769-2cceaa15-014d-4b9a-a3be-efd2e0ec57c7.png)
+![image](https://user-images.githubusercontent.com/72896123/181282875-076be64b-4304-441e-a4a4-631d9c76ae87.png)
+
+
+
+
+
